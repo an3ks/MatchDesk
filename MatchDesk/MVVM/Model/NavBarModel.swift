@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct NavBarItem: Identifiable {
     let id = UUID()
     let imageName: String
