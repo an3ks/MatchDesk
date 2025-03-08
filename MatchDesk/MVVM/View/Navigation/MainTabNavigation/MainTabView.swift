@@ -9,14 +9,16 @@ import SwiftUI
 
 struct MainTabView: View {
     @Binding var selectedTab: Int
+    @Binding var selectedSport: Int
     var body: some View {
         TabView(selection: $selectedTab){
             ZStack{
-                Circle()
-                    .frame(width: 300, height: 300)
-                    .foregroundStyle(Color.mainAccentColor)
-                Text("First view")
-                    .foregroundStyle(Color.white)
+                if selectedSport == 1{
+                    Text("Football view")
+                }
+                else{
+                    Text("Hockey view")
+                }
             }
                 .tag(1)
             
@@ -42,5 +44,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView(selectedTab: .constant(1))
+    MainTabView(selectedTab: .constant(1), selectedSport: .constant(1))
 }
