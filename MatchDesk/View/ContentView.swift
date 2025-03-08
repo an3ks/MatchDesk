@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedTabIndex = 1
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            MainHeaderView()
+            MainTabView(selectedTab: $selectedTabIndex)
+            Spacer()
+                .overlay(alignment:.bottom){
+                    BottomNavBar(tabSelection: $selectedTabIndex)
+                        .ignoresSafeArea(.all, edges: .bottom)
+                        .padding(.bottom, -10)
+                }
         }
         .padding()
     }
+    
 }
 
 #Preview {
     ContentView()
 }
+
