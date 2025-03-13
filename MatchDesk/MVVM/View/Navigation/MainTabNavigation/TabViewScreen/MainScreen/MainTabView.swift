@@ -10,11 +10,12 @@ import SwiftUI
 struct MainTabView: View {
     @Binding var selectedTab: Int
     @Binding var selectedSport: Int
+    @StateObject private var leagueViewModel = LeagueViewModel()
     var body: some View {
         TabView(selection: $selectedTab){
             ZStack{
                 if selectedSport == 1{
-                    Text("Football view")
+                        MainScreenLeagueView()
                 }
                 else{
                     Text("Hockey view")
