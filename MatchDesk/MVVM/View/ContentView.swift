@@ -16,6 +16,7 @@ struct ContentView: View {
         VStack {
             MainHeaderView()
             MainTabView(selectedTab: $selectedTabIndex, selectedSport: $SportSelectedIndex)
+                .padding(.bottom, 30)
                 .overlay(alignment:.bottom){
                     VStack{
                         if selectedTabIndex == 1 {
@@ -41,4 +42,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
