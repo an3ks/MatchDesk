@@ -13,7 +13,7 @@ struct LeagueLogoView: View {
         ZStack{   
             AsyncImage(url: URL(string: league.logo)){ image in
                 image.resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 25, height: 25)
                     .scaledToFit()
                 
             } placeholder: {
@@ -21,6 +21,6 @@ struct LeagueLogoView: View {
             }
             
         }
-        .frame(width: 50, height: 50)
+        .frame(width: 30, height: 30)
     }
 }

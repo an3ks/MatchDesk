@@ -10,10 +10,12 @@ import SwiftUI
 struct LeagueBtnView: View {
     var body: some View {
         ZStack{
-            Rectangle()
+            Circle()
                 .foregroundStyle(Color.mainAccentColor.opacity(0.1))
-                .border(Color.mainAccentColor, width: 3)
-                .clipShape(RoundedRectangle(cornerRadius: 40))
+                .overlay(
+                    Circle()
+                        .stroke(Color.mainAccentColor, lineWidth: 1)
+                )
             Image(systemName: "chevron.right")
                 .resizable()
                 .scaledToFit()
@@ -22,6 +24,5 @@ struct LeagueBtnView: View {
             
         }
         .frame(width: 35, height: 35, alignment: .center)
-        .padding(.top, 10)
     }
 }
