@@ -13,4 +13,7 @@ extension Color{
     static let bottomBarColor = Color("BottomBarClr")
     static let bottomBarTextColor = Color("BottomBarTextClr")
     static let BlackAndWhiteColor = Color("BnW")
+    static let WhiteAndBlackColor = Color("WnB")
+    static let RowColor = Color("RowClr")
+    static let BackgroundColor = Color("BcgClr")
 }

@@ -14,8 +14,7 @@ struct LeagueBtnView: View {
                 .foregroundStyle(Color.mainAccentColor.opacity(0.1))
                 .overlay(
                     Circle()
-                        .stroke(Color.mainAccentColor, lineWidth: 1)
-                )
+                        .stroke(Color.mainAccentColor, lineWidth: 1))
             Text("More")
                 .frame(width: 60, height: 40)
                 .foregroundStyle(Color.mainAccentColor)

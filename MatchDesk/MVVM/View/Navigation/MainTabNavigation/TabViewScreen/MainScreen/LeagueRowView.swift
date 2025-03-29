@@ -35,7 +35,7 @@ struct defaultRowView: View {
                 if isExpanded {
                     HStack{
                         VStack (alignment: .leading){
-                            Text("Founded: 1900")
+                            Text("Founded: \(league.founded)")
                                 .padding(.bottom, 10)
                             Text("Country: \(league.country)")
                         }
@@ -64,6 +64,6 @@ struct defaultRowView: View {
 }
 
 #Preview {
-    defaultRowView(league: League(id: "11", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png"))
+    defaultRowView(league: League(id: "11", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1905"))
         .preferredColorScheme(.dark)
 }
