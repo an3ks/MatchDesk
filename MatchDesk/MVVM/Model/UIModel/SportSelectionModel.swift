@@ -11,7 +11,6 @@ struct SportModelSelectionItem: Identifiable {
     let id = UUID()
     let name: String
 }
-
 struct SportModelOptions{
     static let items: [SportModelSelectionItem] = [
         SportModelSelectionItem(name: "Football"),

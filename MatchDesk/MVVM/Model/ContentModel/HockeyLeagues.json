@@ -1,0 +1,18 @@
+{
+  "leagues": [
+    {
+      "idLeague": "11",
+      "name": "NHL",
+      "country": "USA",
+      "logo": "https://www.thesportsdb.com/images/media/league/badge/4cem2k1619616539.png",
+      "founded" : "1917"
+    },
+    {
+      "idLeague": "12",
+      "name": "KHL",
+      "country": "Russia",
+      "logo": "https://www.thesportsdb.com/images/media/league/badge/tfmf8l1615492008.png",
+      "founded" : "2008"
+    }
+    ]
+}

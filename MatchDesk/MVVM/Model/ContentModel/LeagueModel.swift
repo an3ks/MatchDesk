@@ -12,11 +12,13 @@ struct League: Identifiable, Codable {
     let name: String
     let country: String
     let logo: String
+    let founded: String
 
     enum CodingKeys: String, CodingKey {
         case id = "idLeague"
         case name
         case country
         case logo
+        case founded = "founded"
     }
 }

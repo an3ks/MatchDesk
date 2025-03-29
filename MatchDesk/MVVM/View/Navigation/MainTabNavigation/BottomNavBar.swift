@@ -15,11 +15,11 @@ struct BottomNavBar: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .frame(width: 330, height: 65, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 0))
                 .foregroundColor(Color.bottomBarClr)
                 .shadow(color: Color.BlackAndWhiteColor, radius: 1)
-            HStack(spacing: 50){
+            HStack(spacing: 80){
                 ForEach(0..<navBarOptions.count, id: \.self){index in
                     Button{
                         tabSelection = index+1
@@ -29,7 +29,7 @@ struct BottomNavBar: View {
                             Image(systemName: navBarOptions[index].imageName)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 25, height: 25)
+                                .frame(width: 17, height: 17)
                             Text(navBarOptions[index].name)
                                 .font(.system(size: 13, weight: .light, design: .rounded))
                             if index == tabSelection-1{
@@ -46,13 +46,13 @@ struct BottomNavBar: View {
                                     .offset(y:-8)
                             }
                         }
-                        .padding(.top,15)
+                        .padding(.bottom, 23)
                         .foregroundColor(index == tabSelection-1 ? Color.mainAccentColor : Color.bottomBarTextColor)
                     }
                 }
             }
-            
         }
+        .frame(maxWidth: .infinity, minHeight: 130, maxHeight: 130)
     }
 }
 
