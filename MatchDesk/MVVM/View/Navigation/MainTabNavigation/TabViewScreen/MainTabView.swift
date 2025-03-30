@@ -10,7 +10,6 @@ import SwiftUI
 struct MainTabView: View {
     @Binding var selectedTab: Int
     @Binding var selectedSport: Int
-    @StateObject private var leagueViewModel = FootballLeagueViewModel()
     var body: some View {
         TabView(selection: $selectedTab){
             ZStack{
@@ -59,5 +58,4 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView(selectedTab: .constant(1), selectedSport: .constant(2))
-        .preferredColorScheme(.dark)
 }

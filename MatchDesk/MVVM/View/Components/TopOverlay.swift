@@ -18,26 +18,29 @@ struct TopOverlay: View {
                 .fill(Color.mainAccentColor)
                 .frame(width: UIScreen.main.bounds.width, height: 100)
             HStack{
-                HStack(spacing: 50){
-                    Button( action:{
-                        withAnimation(.linear(duration: 0)) {
-                            SportSelectedIndex = SportSelectedIndex == 1 ? 2 : 1
-                        }},
-                    label:{
-                        HStack{
-                            Text(SportSelectedIndex == 1 ? "Football" : "Hockey")
-                                .foregroundColor(Color.WhiteAndBlackColor)
-                                .font(.custom("HelveticaNeue-Light", size: 20))
-                                .bold()
-                        }
-                        Image(systemName: SportSelectedIndex == 1 ? "soccerball.inverse" : "hockey.puck")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(selectedTabIndex == 1 ? Color.WhiteAndBlackColor : Color.black)
+                if SportSelectedIndex != 0{
+                    HStack(spacing: 50){
+                        Button( action:{
+                            withAnimation(.linear(duration: 0)) {
+                                SportSelectedIndex = SportSelectedIndex == 1 ? 2 : 1
+                            }},
+                                label:{
+                            HStack{
+                                Text(SportSelectedIndex == 1 ? "Football" : "Hockey")
+                                    .foregroundColor(Color.WhiteAndBlackColor)
+                                    .font(.custom("HelveticaNeue-Light", size: 20))
+                                    .bold()
+                            }
+                            Image(systemName: SportSelectedIndex == 1 ? "soccerball.inverse" : "hockey.puck")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(selectedTabIndex == 1 ? Color.WhiteAndBlackColor : Color.black)
                             .frame(width: 30, height: 30)})
+                    }
+                    .padding(.leading, 30)
+                    .padding(.top, 40)
                 }
-                .padding(.leading, 30)
-                .padding(.top, 40)
+                
                 Spacer()
                 Text("Match \n Desk")
                     .font(.system(size: 17, weight: .bold, design: .rounded))
@@ -52,5 +55,5 @@ struct TopOverlay: View {
     }
 }
 #Preview {
-    TopOverlay(SportSelectedIndex: .constant(1))
+    TopOverlay(SportSelectedIndex: .constant(0))
 }
