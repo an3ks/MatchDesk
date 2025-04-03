@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		034A3C802D9E97A1008F899F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 034A3C7F2D9E97A1008F899F /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0387FFB32D762DC000E278F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		034A3C7F2D9E97A1008F899F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0387FFA22D762DBE00E278F6 /* MatchDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0387FFB22D762DC000E278F6 /* MatchDeskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchDeskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0387FFBC2D762DC000E278F6 /* MatchDeskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchDeskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +45,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		034A3C852D9E9AC9008F899F /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		0387FFA42D762DBE00E278F6 /* MatchDesk */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -88,6 +98,8 @@
 		0387FF992D762DBE00E278F6 = {
 			isa = PBXGroup;
 			children = (
+				034A3C7F2D9E97A1008F899F /* README.md */,
+				034A3C852D9E9AC9008F899F /* Screenshots */,
 				0387FFA42D762DBE00E278F6 /* MatchDesk */,
 				0387FFB52D762DC000E278F6 /* MatchDeskTests */,
 				0387FFBF2D762DC000E278F6 /* MatchDeskUITests */,
@@ -121,6 +133,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				034A3C852D9E9AC9008F899F /* Screenshots */,
 				0387FFA42D762DBE00E278F6 /* MatchDesk */,
 			);
 			name = MatchDesk;
@@ -225,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034A3C802D9E97A1008F899F /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
