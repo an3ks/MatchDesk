@@ -15,6 +15,7 @@ class FootballFixturesViewModel: ObservableObject {
         fetchFootballFixtures()
     }
     func fetchFootballFixtures() {
+        print("Загрузка матчей пошла")
         if !footballFixtures.isEmpty {return}
         let leagueIDs = ["4335", "4334", "4331", "4332", "4355", "4346", "4328"]
         for id in leagueIDs {

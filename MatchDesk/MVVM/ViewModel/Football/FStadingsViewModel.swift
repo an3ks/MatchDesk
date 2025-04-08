@@ -18,6 +18,7 @@ class FStadingsViewModel: ObservableObject {
     }
     
     func fetchStandings(){
+        print("Загрузка таблицы пошла")
         let urlString = "https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=\(leagueID)&s=2024-2025"
         
         guard let url = URL(string: urlString) else {return}

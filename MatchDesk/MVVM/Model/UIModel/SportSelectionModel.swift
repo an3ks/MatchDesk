@@ -13,8 +13,8 @@ struct SportModelSelectionItem: Identifiable {
 }
 struct SportModelOptions{
     static let items: [SportModelSelectionItem] = [
-        SportModelSelectionItem(name: "Football"),
-        SportModelSelectionItem(name: "Hockey")
+        SportModelSelectionItem(name: "Hockey"),
+        SportModelSelectionItem(name: "Football")
     ]
 }
 struct EmptySportModelOptions{

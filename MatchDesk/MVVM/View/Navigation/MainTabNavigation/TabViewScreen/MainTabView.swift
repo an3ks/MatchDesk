@@ -11,6 +11,7 @@ struct MainTabView: View {
     @Binding var selectedTab: Int
     @Binding var selectedSport: Int
     var body: some View {
+        
         TabView(selection: $selectedTab){
             ZStack{
                 if selectedSport == 1{

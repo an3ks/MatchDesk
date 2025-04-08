@@ -16,6 +16,7 @@ class FootballLeagueViewModel: ObservableObject {
     }
     
     private func loadMockData() {
+        print("Загрузка лиг пошла")
         if !footballFeagues.isEmpty { return }
         if let url = Bundle.main.url(forResource: "FootballLeagues", withExtension: "json"),
            let data = try? Data(contentsOf: url),

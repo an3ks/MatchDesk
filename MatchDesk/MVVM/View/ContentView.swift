@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var EmptySportSelectionOptions = EmptySportModelOptions.items
 
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack{
                 VStack{
                     ZStack{
@@ -30,9 +30,11 @@ struct ContentView: View {
                 }
             }
         }
+
         
     }
 }
 #Preview {
     ContentView()
+//        .preferredColorScheme(.dark)
 }
