@@ -19,18 +19,16 @@ The app ought to include:
 - Scrollable UI for matches and leagues
 - Standings view for each league 
 - Color theming
+- League standings table
 
 ## 🔜 In Progress / To Do
-- League standings table (ui improvement)
 - Team detail screen
 - Caching mechanism
-- Match schedule layout
 - Onboarding screen and loaders
 
 ## ⚠️ Known Issues / Challenges
-- Standings view closes automatically after color theme change
+- Color theme has to be reworked
 - Needs fallback logic when API returns no data
-- Codebase needs refactoring in some places
 
 ## 📸 Current UI
 
