@@ -41,7 +41,7 @@ struct TopOverlay: View {
                                             .cornerRadius(12)
                                     }
                                 }
-                            
+                                
                         }
                     }
                     .padding(.leading, 30)
