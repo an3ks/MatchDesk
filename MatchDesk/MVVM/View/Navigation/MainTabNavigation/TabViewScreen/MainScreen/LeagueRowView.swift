@@ -13,7 +13,7 @@ struct defaultRowView: View {
     @State private var isExpanded = false
     
     var body: some View {
-        VStack(alignment: .leading){
+            VStack(alignment: .leading){
                 HStack {
                     AsyncImage(url: URL(string: league.logo)) { image in
                         LeagueLogoView(league: league)
@@ -42,9 +42,8 @@ struct defaultRowView: View {
                         .foregroundColor(Color.BlackAndWhiteColor)
                         .font(.custom("HelveticaNeue-Light", size: 13))
                         Spacer()
-                        Button(action: {},
-                               label:{
-                            LeagueBtnView().padding(.trailing, 15)})
+                        NavigationLink(destination: LeagueStandingsView(league: league)){
+                            LeagueBtnView().padding(.trailing, 15)}
                     }
                     .padding()
                     .padding(.bottom, 10)
@@ -60,10 +59,10 @@ struct defaultRowView: View {
                     isExpanded.toggle()
                 }
             }
+        }
     }
-}
+
 
 #Preview {
     defaultRowView(league: League(id: "11", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1905"))
-        .preferredColorScheme(.dark)
 }

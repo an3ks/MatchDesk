@@ -12,25 +12,29 @@ struct ContentView: View {
     @State private var sportSelectedIndex = 1
     @State private var SportSelectionOptions = SportModelOptions.items
     @State private var EmptySportSelectionOptions = EmptySportModelOptions.items
+
     var body: some View {
-        ZStack{
-            VStack{
-                ZStack{
-                    MainTabView(selectedTab: $selectedTabIndex, selectedSport: $sportSelectedIndex)
+        NavigationStack{
+            ZStack{
+                VStack{
+                    ZStack{
+                        MainTabView(selectedTab: $selectedTabIndex, selectedSport: $sportSelectedIndex)
+                    }
+                    .safeAreaInset(edge: .bottom){
+                        BottomNavBar(tabSelection: $selectedTabIndex)
+                            .padding(.bottom, -60)
+                    }
                 }
-                .safeAreaInset(edge: .bottom){
-                    BottomNavBar(tabSelection: $selectedTabIndex)
-                        .padding(.bottom, -60)
+                .safeAreaInset(edge: .top){
+                    TopOverlay(SportSelectedIndex: $sportSelectedIndex)
                 }
-            }
-            .safeAreaInset(edge: .top){
-                TopOverlay(SportSelectedIndex: $sportSelectedIndex)
             }
         }
+
+        
     }
-    
 }
 #Preview {
     ContentView()
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
 }

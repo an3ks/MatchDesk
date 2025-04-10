@@ -18,26 +18,36 @@ struct TopOverlay: View {
                 .fill(Color.mainAccentColor)
                 .frame(width: UIScreen.main.bounds.width, height: 100)
             HStack{
-                HStack(spacing: 50){
-                    Button( action:{
-                        withAnimation(.linear(duration: 0)) {
-                            SportSelectedIndex = SportSelectedIndex == 1 ? 2 : 1
-                        }},
-                    label:{
-                        HStack{
-                            Text(SportSelectedIndex == 1 ? "Football" : "Hockey")
-                                .foregroundColor(Color.WhiteAndBlackColor)
-                                .font(.custom("HelveticaNeue-Light", size: 20))
-                                .bold()
+                if SportSelectedIndex != 3{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 12)
+                            .frame(width: 165, height: 25)
+                            .foregroundStyle(Color.BackgroundColor.opacity(0.3))
+                        
+                            HStack(spacing: 5) {
+                                ForEach(SportModelOptions.items.indices, id: \.self) { index in
+                                    let sport = SportModelOptions.items[index]
+                                    Button(action: {
+                                        withAnimation(.easeIn(duration: 0.3)){
+                                            SportSelectedIndex = index
+                                        }
+                                    }) {
+                                        Text(sport.name)
+                                            .font(.custom("HelveticaNeue-Light", size: 13))
+                                            .foregroundColor(SportSelectedIndex == index ? .mainAccentColor : Color.bottomBarTextColor)
+                                            .frame(width: 80, height: 25)
+                                            .bold()
+                                            .background(SportSelectedIndex == index ? Color.WhiteAndBlackColor : Color.gray.opacity(0.3))
+                                            .cornerRadius(12)
+                                    }
+                                }
+                                
                         }
-                        Image(systemName: SportSelectedIndex == 1 ? "soccerball.inverse" : "hockey.puck")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(selectedTabIndex == 1 ? Color.WhiteAndBlackColor : Color.black)
-                            .frame(width: 30, height: 30)})
+                    }
+                    .padding(.leading, 30)
+                    .padding(.top, 39)
                 }
-                .padding(.leading, 30)
-                .padding(.top, 40)
+                
                 Spacer()
                 Text("Match \n Desk")
                     .font(.system(size: 17, weight: .bold, design: .rounded))
@@ -53,4 +63,7 @@ struct TopOverlay: View {
 }
 #Preview {
     TopOverlay(SportSelectedIndex: .constant(1))
+//        .preferredColorScheme(.dark)
 }
+
+
