@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section(header: Text("Внешний вид")) {
+                Toggle(isOn: $isDarkMode) {
+                    Text("Темная тема")
+                }
+            }
+            
+            Section(header: Text("О приложении")) {
+                HStack {
+                    Text("Версия")
+                    Spacer()
+                    Text("1.0.5")
+                        .foregroundColor(.gray)
+                }
+                HStack {
+                    Text("Разработчик")
+                    Spacer()
+                    Text("Данила Авдиенко")
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .safeAreaInset(edge: .top){
+            Rectangle()
+                .frame(height: 100)
+        }
+        .ignoresSafeArea(.all)
+        .navigationTitle("Настройки")
     }
 }
 

@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var sportSelectedIndex = 1
     @State private var SportSelectionOptions = SportModelOptions.items
     @State private var EmptySportSelectionOptions = EmptySportModelOptions.items
-
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     var body: some View {
         NavigationStack{
             ZStack{
@@ -29,7 +29,7 @@ struct ContentView: View {
                     TopOverlay(SportSelectedIndex: $sportSelectedIndex)
                 }
             }
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(isDarkMode ? .dark : .light)
         }
 
         
