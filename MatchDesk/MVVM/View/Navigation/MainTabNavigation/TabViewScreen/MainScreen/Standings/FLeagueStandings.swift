@@ -20,15 +20,23 @@ struct LeagueStandingsView: View {
     
     var body: some View {
         
-            List {
-                Section(header: headerView) {
-                    ForEach(standingsViewModel.standings) { standing in
-                        rowView(for: standing)
-                    }
+        List {
+            Section(header: headerView) {
+                ForEach(standingsViewModel.standings) { standing in
+                    ZStack {
+                            rowView(for: standing)
+                                .contentShape(Rectangle()) // определяем зону клика
+                            NavigationLink(destination: SettingsView()) {
+                                EmptyView()
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .opacity(0) // скрываем кнопку
+                        }
                 }
             }
-            .padding(.top, -10)
-            .scrollIndicators(.hidden)
+        }
+        .padding(.top, -10)
+        .scrollIndicators(.hidden)
         .listStyle(PlainListStyle())
         
         .safeAreaInset(edge: .top){
@@ -52,32 +60,32 @@ struct LeagueStandingsView: View {
                     })
                     Spacer()
                     
-                        Text(league.name)
-                            .font(.custom("HelveticaNeue-Light", size: 23))
-                            .foregroundStyle(Color.WhiteAndBlackColor)
-                            .multilineTextAlignment(.center)
-                            .frame(width: 170)
+                    Text(league.name)
+                        .font(.custom("HelveticaNeue-Light", size: 23))
+                        .foregroundStyle(Color.WhiteAndBlackColor)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 170)
                     Spacer()
-                        AsyncImage(url: URL(string: league.logo)){image in
-                            image.resizable()
-                                .scaledToFit()
-                                .frame(width:60, height:60)
-                                .padding(.trailing, 39)
-                        }
-                        placeholder: {
-                            ProgressView()
-                        }
-                        .padding(.trailing, 39)
-                        .frame(width:60, height:60)
+                    AsyncImage(url: URL(string: league.logo)){image in
+                        image.resizable()
+                            .scaledToFit()
+                            .frame(width:60, height:60)
+                            .padding(.trailing, 39)
+                    }
+                    placeholder: {
+                        ProgressView()
+                    }
+                    .padding(.trailing, 39)
+                    .frame(width:60, height:60)
                 }
                 .padding(.top, 50)
             }
         }
-            .safeAreaInset(edge: .bottom) { // Отступ снизу
-                Color.clear.frame(height: 30)
-            }
-            .ignoresSafeArea()
-            .navigationBarBackButtonHidden(true)
+        .safeAreaInset(edge: .bottom) { // Отступ снизу
+            Color.clear.frame(height: 30)
+        }
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
     
     private var headerView: some View {
@@ -97,37 +105,47 @@ struct LeagueStandingsView: View {
     }
     
     private func rowView(for standing: LeagueStanding) -> some View {
+        
+        
+        
         HStack {
-            Text(standing.position).frame(width: UIScreen.main.bounds.width*0.07)
-            HStack(spacing: 7){
-                AsyncImage(url: URL(string: standing.teamLogo)){image in
-                    image.resizable()
-                        .frame(width:30, height:30)
-                        .scaledToFit()
-                }placeholder: {
-                    ProgressView()
-                        .frame(width:30, height:30)
+            
+                Text(standing.position).frame(width: UIScreen.main.bounds.width*0.07)
+                HStack(spacing: 7){
+                    
+                    AsyncImage(url: URL(string: standing.teamLogo)){image in
+                        image.resizable()
+                            .frame(width:30, height:30)
+                            .scaledToFit()
+                    }placeholder: {
+                        ProgressView()
+                            .frame(width:30, height:30)
+                    }
+                    Text(standing.teamName).frame(width: UIScreen.main.bounds.width*0.28)
+                        .multilineTextAlignment(.center)
                 }
-                Text(standing.teamName).frame(width: UIScreen.main.bounds.width*0.28)
-                    .multilineTextAlignment(.center)
+                HStack(){
+                    Text(standing.points).frame(width: UIScreen.main.bounds.width*0.07)
+                    Text(standing.played).frame(width: UIScreen.main.bounds.width*0.07)
+                    Text(standing.won).frame(width: UIScreen.main.bounds.width*0.07)
+                    Text(standing.drawn).frame(width: UIScreen.main.bounds.width*0.07)
+                    Text(standing.lost).frame(width: UIScreen.main.bounds.width*0.07)
+                    
+                }.navigationBarBackButtonHidden(true)
+                
             }
-            HStack(){
-                Text(standing.points).frame(width: UIScreen.main.bounds.width*0.07)
-                Text(standing.played).frame(width: UIScreen.main.bounds.width*0.07)
-                Text(standing.won).frame(width: UIScreen.main.bounds.width*0.07)
-                Text(standing.drawn).frame(width: UIScreen.main.bounds.width*0.07)
-                Text(standing.lost).frame(width: UIScreen.main.bounds.width*0.07)
-            }
-        }.frame(width: UIScreen.main.bounds.width*0.95, height: 50)
-        .font(.custom("HelveticaNeue-Light", size: 16))
-        .padding(.vertical, 5)
-        .background(Color.RowColor.opacity(0.3))
-        .cornerRadius(10)
+            .buttonStyle(PlainButtonStyle())
+            .frame(width: UIScreen.main.bounds.width*0.95, height: 50)
+            .font(.custom("HelveticaNeue-Light", size: 16))
+            .padding(.vertical, 5)
+            .background(Color.RowColor.opacity(0.3))
+            .cornerRadius(10)
+        }
+    
+    
+    #Preview {
+        LeagueStandingsView(league: League(id: "4328", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1888"))
+            .onAppear()
+        
     }
-}
-
-#Preview {
-    LeagueStandingsView(league: League(id: "4328", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1888"))
-        .onAppear()
-
 }
