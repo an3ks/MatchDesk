@@ -21,8 +21,8 @@ struct TopOverlay: View {
                 if SportSelectedIndex != 3{
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
-                            .frame(width: 165, height: 25)
-                            .foregroundStyle(Color.BackgroundColor.opacity(0.3))
+                            .frame(width: 145, height: 25)
+                            .foregroundStyle(Color.BackgroundColor.opacity(0.0))
                         
                             HStack(spacing: 5) {
                                 ForEach(SportModelOptions.items.indices, id: \.self) { index in
@@ -35,9 +35,9 @@ struct TopOverlay: View {
                                         Text(sport.name)
                                             .font(.custom("HelveticaNeue-Light", size: 13))
                                             .foregroundColor(SportSelectedIndex == index ? .mainAccentColor : Color.bottomBarTextColor)
-                                            .frame(width: 80, height: 25)
+                                            .frame(width: 70, height: 25)
                                             .bold()
-                                            .background(SportSelectedIndex == index ? Color.WhiteAndBlackColor : Color.gray.opacity(0.3))
+                                            .background(SportSelectedIndex == index ? Color.WhiteAndBlackColor : Color.gray.opacity(0.5 ))
                                             .cornerRadius(12)
                                     }
                                 }

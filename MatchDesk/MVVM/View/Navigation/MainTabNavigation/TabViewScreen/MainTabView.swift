@@ -43,15 +43,13 @@ struct MainTabView: View {
                 Text("Second view")
                     .foregroundStyle(Color.white)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.BackgroundColor)
+            
             .tag(2)
             
-            ZStack{
-                Circle()
-                    .frame(width: 300, height: 300)
-                    .foregroundStyle(Color.mainAccentColor)
-                Text("Third view")
-                    .foregroundStyle(Color.white)
-            }
+            SettingsView()
+                
             .tag(3)
         }
     }
