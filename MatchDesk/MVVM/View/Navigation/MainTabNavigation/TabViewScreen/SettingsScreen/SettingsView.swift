@@ -18,11 +18,12 @@ struct SettingsView: View {
                 }
             }
             
+            
             Section(header: Text("О приложении")) {
                 HStack {
                     Text("Версия")
                     Spacer()
-                    Text("1.0.5")
+                    Text("1.0.6")
                         .foregroundColor(.gray)
                 }
                 HStack {
@@ -32,7 +33,9 @@ struct SettingsView: View {
                         .foregroundColor(.gray)
                 }
             }
+            
         }
+
         .safeAreaInset(edge: .top){
             Rectangle()
                 .frame(height: 100)
@@ -40,6 +43,7 @@ struct SettingsView: View {
         .ignoresSafeArea(.all)
         .navigationTitle("Настройки")
     }
+        
 }
 
 #Preview {

@@ -43,9 +43,13 @@ struct MainTabView: View {
                 Text("Second view")
                     .foregroundStyle(Color.white)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.BackgroundColor)
+            
             .tag(2)
             
             SettingsView()
+                
             .tag(3)
         }
     }
