@@ -42,7 +42,9 @@ struct SettingsView: View {
         }
         .ignoresSafeArea(.all)
         .navigationTitle("Настройки")
+
     }
+    
         
 }
 

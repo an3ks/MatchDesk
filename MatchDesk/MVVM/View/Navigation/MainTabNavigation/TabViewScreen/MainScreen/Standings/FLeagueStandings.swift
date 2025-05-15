@@ -26,11 +26,12 @@ struct LeagueStandingsView: View {
                     ZStack {
                             rowView(for: standing)
                                 .contentShape(Rectangle()) // определяем зону клика
-                            NavigationLink(destination: SettingsView()) {
+                        NavigationLink(destination: TeamDetailView(standing: standing, viewModel: TeamDetailViewModel(teamName: standing.teamName))) {
                                 EmptyView()
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .opacity(0) // скрываем кнопку
+                            .opacity(0)
+                            .navigationBarBackButtonHidden(true)
+                        // скрываем кнопку
                         }
                 }
             }
@@ -141,11 +142,9 @@ struct LeagueStandingsView: View {
             .background(Color.RowColor.opacity(0.3))
             .cornerRadius(10)
         }
+}
+#Preview {
+    LeagueStandingsView(league: League(id: "4328", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1888"))
+        .onAppear()
     
-    
-    #Preview {
-        LeagueStandingsView(league: League(id: "4328", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1888"))
-            .onAppear()
-        
-    }
 }
