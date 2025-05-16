@@ -26,7 +26,7 @@ struct LeagueStandingsView: View {
                     ZStack {
                             rowView(for: standing)
                                 .contentShape(Rectangle()) // определяем зону клика
-                        NavigationLink(destination: TeamDetailView(standing: standing, viewModel: TeamDetailViewModel(teamName: standing.teamName))) {
+                        NavigationLink(destination: TeamDetailView(standing: standing, viewModel: TeamDetailViewModel(teamName: standing.teamName), fixtureViewModel: teamFixtureViewModel(teamId: standing.teamId))) {
                                 EmptyView()
                             }
                             .opacity(0)

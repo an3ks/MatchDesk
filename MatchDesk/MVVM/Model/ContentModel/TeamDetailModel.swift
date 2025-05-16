@@ -21,6 +21,9 @@ struct TeamDetailModel: Identifiable, Codable {
     let fanName: String
     let color1: String
     let color2: String
+    let website: String
+    let twitter: String
+    let facebook: String
     
     
     enum CodingKeys: String, CodingKey {
@@ -37,6 +40,9 @@ struct TeamDetailModel: Identifiable, Codable {
         case fanName = "strKeywords"
         case color1 = "strColour1"
         case color2 = "strColour2"
+        case website = "strWebsite"
+        case twitter = "strTwitter"
+        case facebook = "strFacebook"
         
     }
 }
