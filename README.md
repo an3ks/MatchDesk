@@ -41,8 +41,8 @@ The app ought to include:
 ### Main Screen (Hockey)
 <img src="Screenshots/MainScreenHockey.png" alt="Main Screen Hockey" width="400" />
 
-### Standings Team View
-<img src="Screenshots/StandingsTeamView.png" alt="Standings Team View" width="400" />
+### Standings View
+<img src="Screenshots/StandingsView.png" alt="Standings View" width="400" />
 
 ### Team Detail View
 <img src="Screenshots/TeamDetailView.png" alt="Team Detail View" width="400" />
