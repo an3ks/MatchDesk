@@ -32,7 +32,7 @@ struct MainScreenFootballView: View {
                     .scrollIndicators(.hidden)
                     VStack(spacing: 15) {
                         ForEach(footballLeagueViewModel.footballFeagues, id: \.id) { league in
-                            defaultRowView(league: league)
+                            defaultRowView(league: league, sportSelectedIndex: $sportSelectedIndex)
                                 .padding(.horizontal, 16)
                                 .frame(minWidth: UIScreen.main.bounds.width * 0.8, maxWidth: UIScreen.main.bounds.width * 0.8, minHeight: 15)
                                 .background(

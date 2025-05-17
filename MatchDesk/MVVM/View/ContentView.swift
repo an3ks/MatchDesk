@@ -32,8 +32,6 @@ struct ContentView: View {
                             }
             .preferredColorScheme(isDarkMode ? .dark : .light)
         }
-
-        
     }
 }
 //#Preview {

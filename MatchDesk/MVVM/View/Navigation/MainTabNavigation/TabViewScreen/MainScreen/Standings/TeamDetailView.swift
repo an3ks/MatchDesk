@@ -69,7 +69,7 @@ struct TeamDetailView: View {
         }
         
         .safeAreaInset(edge: .top){
-            topTeamOverlay(fixtureViewModel: fixtureViewModel, viewModel: viewModel)
+            topTeamOverlay(backButton: .constant(true), fixtureViewModel: fixtureViewModel, viewModel: viewModel)
         }
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.all)
@@ -95,7 +95,7 @@ struct TeamDetailView: View {
 
 struct topTeamOverlay: View {
     @Environment(\.dismiss) var dismiss
-    
+    @Binding var backButton: Bool
     @AppStorage("selectedTeamId") var selectedTeamId: String = ""
     @AppStorage("selectedTeamName") var selectedTeamName: String = ""
     @StateObject var fixtureViewModel: teamFixtureViewModel
@@ -107,17 +107,24 @@ struct topTeamOverlay: View {
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.147)
             
             HStack(alignment: .center, spacing: 0){
-                Button(action: {
-                    dismiss()
-                },
-                       label: {
-                    Image(systemName: "chevron.left")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 25, height: 25)
-                        .foregroundStyle(Color.WhiteAndBlackColor)
-                })
-                .frame(width:60, height:60)
+                if backButton{
+                    Button(action: {
+                        dismiss()
+                    },
+                           label: {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.WhiteAndBlackColor)
+                    })
+                    .frame(width:60, height:60)
+                }
+                else{
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(width:60, height:60)
+                }
                 Text(fixtureViewModel.teamFixtures.last?.homeName ?? "Team")
                     .font(.custom("HelveticaNeue-Light", size: 25))
                     .foregroundStyle(Color.WhiteAndBlackColor)

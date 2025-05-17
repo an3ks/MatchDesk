@@ -2,7 +2,7 @@
 //  favouriteTeamView.swift
 //  MatchDesk
 //
-//  Created by Данила Авдиенко on 16.05.2025.
+//  Created by Данила Авдиенко on 17.05.2025.
 //
 
 import SwiftUI
@@ -70,7 +70,7 @@ struct favouriteTeamView: View {
         }
         
         .safeAreaInset(edge: .top){
-            topTeamOverlay(fixtureViewModel: fixtureViewModel, viewModel: viewModel)
+            topTeamOverlay(backButton: .constant(false), fixtureViewModel: fixtureViewModel, viewModel: viewModel)
         }
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.all)
@@ -81,5 +81,4 @@ struct favouriteTeamView: View {
 //#Preview {
 //    favouriteTeamView()
 //}
-
-
+    
