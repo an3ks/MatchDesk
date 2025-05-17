@@ -20,15 +20,15 @@ The app ought to include:
 - Standings view for each league 
 - Color theming
 - League standings table
+- Team detail screen
 
 ## 🔜 In Progress / To Do
-- Team detail screen
 - Caching mechanism
 - Onboarding screen and loaders
+- Hockey teams view
 
 ## ⚠️ Known Issues / Challenges
 - Color theme has to be reworked
-- Needs fallback logic when API returns no data
 
 ## 📸 Current UI
 
@@ -41,8 +41,17 @@ The app ought to include:
 ### Main Screen (Hockey)
 <img src="Screenshots/MainScreenHockey.png" alt="Main Screen Hockey" width="400" />
 
-### Standings View
-<img src="Screenshots/StandingsView.png" alt="Standings View" width="400" />
+### Standings Team View
+<img src="Screenshots/StandingsTeamView.png" alt="Standings Team View" width="400" />
+
+### Team Detail View
+<img src="Screenshots/TeamDetailView.png" alt="Team Detail View" width="400" />
+
+### Favourite Team View
+<img src="Screenshots/FavouriteTeamView.png" alt="Favourite Team View" width="400" />
+
+### Settings View
+<img src="Screenshots/SettingsView.png" alt="Settings View" width="400" />
 
 ## 🛠 Stack
 - Swift
