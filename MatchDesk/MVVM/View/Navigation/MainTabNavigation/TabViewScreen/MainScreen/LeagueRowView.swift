@@ -10,6 +10,7 @@ import SwiftUI
 
 struct defaultRowView: View {
     let league: League
+    @Binding var sportSelectedIndex: Int
     @State private var isExpanded = false
     
     var body: some View {
@@ -42,8 +43,17 @@ struct defaultRowView: View {
                         .foregroundColor(Color.BlackAndWhiteColor)
                         .font(.custom("HelveticaNeue-Light", size: 13))
                         Spacer()
-                        NavigationLink(destination: LeagueStandingsView(league: league)){
-                            LeagueBtnView().padding(.trailing, 15)}
+                        if sportSelectedIndex == 1{
+                            NavigationLink(destination: LeagueStandingsView(league: league))
+                            {
+                                LeagueBtnView().padding(.trailing, 15)
+                            } }
+                        else{
+                            NavigationLink(destination: LeagueStandingsView(league: league))
+                            {
+                                LeagueBtnView().padding(.trailing, 15)
+                            }
+                        }
                     }
                     .padding()
                     .padding(.bottom, 10)
@@ -64,5 +74,5 @@ struct defaultRowView: View {
 
 
 #Preview {
-    defaultRowView(league: League(id: "11", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1905"))
+    defaultRowView( league: League(id: "11", name: "English Premier League", country: "England", logo: "https://www.thesportsdb.com/images/media/league/badge/gasy9d1737743125.png", founded: "1905"), sportSelectedIndex: .constant(2))
 }

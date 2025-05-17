@@ -9,6 +9,7 @@ import Foundation
 
 struct LeagueStanding: Identifiable, Codable {
     let id: String
+    let teamId: String
     let position: String
     let points: String
     let played: String
@@ -23,6 +24,7 @@ struct LeagueStanding: Identifiable, Codable {
     
     enum CodingKeys: String, CodingKey {
         case id = "idStanding"
+        case teamId = "idTeam"
         case position = "intRank"
         case points = "intPoints"
         case played = "intPlayed"

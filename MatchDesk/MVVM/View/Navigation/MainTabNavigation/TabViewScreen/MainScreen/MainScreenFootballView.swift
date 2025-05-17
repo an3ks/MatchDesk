@@ -9,6 +9,7 @@ import SwiftUI
 struct MainScreenFootballView: View {
     @StateObject private var footballLeagueViewModel = FootballLeagueViewModel()
     @StateObject private var fixturesViewModel = FootballFixturesViewModel()
+    @Binding var sportSelectedIndex: Int
     
     var body: some View {
         
@@ -31,7 +32,7 @@ struct MainScreenFootballView: View {
                     .scrollIndicators(.hidden)
                     VStack(spacing: 15) {
                         ForEach(footballLeagueViewModel.footballFeagues, id: \.id) { league in
-                            defaultRowView(league: league)
+                            defaultRowView(league: league, sportSelectedIndex: $sportSelectedIndex)
                                 .padding(.horizontal, 16)
                                 .frame(minWidth: UIScreen.main.bounds.width * 0.8, maxWidth: UIScreen.main.bounds.width * 0.8, minHeight: 15)
                                 .background(
@@ -43,12 +44,16 @@ struct MainScreenFootballView: View {
                     .padding(.top, 30)
                 }
             }
+            .safeAreaInset(edge: .top){
+                TopOverlay(SportSelectedIndex: $sportSelectedIndex)
+            }
+
             .scrollIndicators(.hidden)
         }
     }
 
 #Preview {
-    MainScreenFootballView()
+    MainScreenFootballView(sportSelectedIndex: .constant(1))
         .preferredColorScheme(.dark)
 }
 

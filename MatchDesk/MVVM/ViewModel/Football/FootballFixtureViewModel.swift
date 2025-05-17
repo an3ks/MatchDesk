@@ -19,7 +19,7 @@ class FootballFixturesViewModel: ObservableObject {
         if !footballFixtures.isEmpty {return}
         let leagueIDs = ["4335", "4334", "4331", "4332", "4355", "4346", "4328"]
         for id in leagueIDs {
-            let urlStr = "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=\(id)&r=29&s=2024-2025"
+            let urlStr = "https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=\(id)&r=33&s=2024-2025"
             guard let url = URL(string: urlStr) else { return }
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
