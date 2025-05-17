@@ -10,6 +10,7 @@ import SwiftUI
 struct MainScreenHockeyView: View {
     @StateObject private var hockeyLeagueViewModel = HockeyLeagueViewModel()
     @StateObject private var hockeyFixturesViewModel = HockeyFixturesViewModel()
+    @Binding var sportSelectedIndex: Int
     var body: some View {
         ScrollView {
             VStack {
@@ -43,9 +44,13 @@ struct MainScreenHockeyView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .safeAreaInset(edge: .top){
+            TopOverlay(SportSelectedIndex: $sportSelectedIndex)
+        }
     }
+    
 }
 
 #Preview {
-    MainScreenHockeyView()
+    MainScreenHockeyView(sportSelectedIndex: .constant(2))
 }

@@ -28,7 +28,6 @@ class teamFixtureViewModel: ObservableObject {
                     return }
                 
                 do {
-                    print(String(data: data, encoding: .utf8) ?? "нет строки")
                     let decodedData = try JSONDecoder().decode(TeamFixturesResponse.self, from: data)
                     let sorted = decodedData.results.sorted { $0.dateEvent < $1.dateEvent }
                     

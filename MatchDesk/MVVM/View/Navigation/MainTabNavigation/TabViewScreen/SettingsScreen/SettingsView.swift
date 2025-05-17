@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @State private var sportSelectedIndex = 3
     
     var body: some View {
         Form {
@@ -23,7 +24,7 @@ struct SettingsView: View {
                 HStack {
                     Text("Версия")
                     Spacer()
-                    Text("1.0.6")
+                    Text("1.0.7")
                         .foregroundColor(.gray)
                 }
                 HStack {
@@ -35,11 +36,10 @@ struct SettingsView: View {
             }
             
         }
-
         .safeAreaInset(edge: .top){
-            Rectangle()
-                .frame(height: 100)
+            TopOverlay(SportSelectedIndex: $sportSelectedIndex)
         }
+
         .ignoresSafeArea(.all)
         .navigationTitle("Настройки")
 

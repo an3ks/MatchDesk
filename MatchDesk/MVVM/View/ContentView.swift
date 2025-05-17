@@ -12,30 +12,31 @@ struct ContentView: View {
     @State private var sportSelectedIndex = 1
     @State private var SportSelectionOptions = SportModelOptions.items
     @State private var EmptySportSelectionOptions = EmptySportModelOptions.items
+    @StateObject var viewModel = TeamDetailViewModel(teamName: "")
+    @StateObject var fixtureViewModel = teamFixtureViewModel(teamId: "")
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     var body: some View {
         NavigationStack{
             ZStack{
                 VStack{
                     ZStack{
-                        MainTabView(selectedTab: $selectedTabIndex, selectedSport: $sportSelectedIndex)
+                        MainTabView(selectedTab: $selectedTabIndex, selectedSport: $sportSelectedIndex,
+                                    viewModel: viewModel,
+                                    fixtureViewModel: fixtureViewModel)
                     }
                     .safeAreaInset(edge: .bottom){
                         BottomNavBar(tabSelection: $selectedTabIndex)
                             .padding(.bottom, -60)
                     }
                 }
-                .safeAreaInset(edge: .top){
-                    TopOverlay(SportSelectedIndex: $sportSelectedIndex)
-                }
-            }
+                            }
             .preferredColorScheme(isDarkMode ? .dark : .light)
         }
 
         
     }
 }
-#Preview {
-    ContentView()
-//        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    ContentView()
+////        .preferredColorScheme(.dark)
+//}

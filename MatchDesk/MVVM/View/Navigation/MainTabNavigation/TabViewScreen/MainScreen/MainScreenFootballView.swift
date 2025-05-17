@@ -9,6 +9,7 @@ import SwiftUI
 struct MainScreenFootballView: View {
     @StateObject private var footballLeagueViewModel = FootballLeagueViewModel()
     @StateObject private var fixturesViewModel = FootballFixturesViewModel()
+    @Binding var sportSelectedIndex: Int
     
     var body: some View {
         
@@ -43,12 +44,16 @@ struct MainScreenFootballView: View {
                     .padding(.top, 30)
                 }
             }
+            .safeAreaInset(edge: .top){
+                TopOverlay(SportSelectedIndex: $sportSelectedIndex)
+            }
+
             .scrollIndicators(.hidden)
         }
     }
 
 #Preview {
-    MainScreenFootballView()
+    MainScreenFootballView(sportSelectedIndex: .constant(1))
         .preferredColorScheme(.dark)
 }
 

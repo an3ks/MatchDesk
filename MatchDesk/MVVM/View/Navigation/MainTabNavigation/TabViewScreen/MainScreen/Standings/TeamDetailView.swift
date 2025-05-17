@@ -11,7 +11,8 @@ struct TeamDetailView: View {
     let standing: LeagueStanding
     @StateObject var viewModel: TeamDetailViewModel
     @StateObject var fixtureViewModel: teamFixtureViewModel
-    
+    @AppStorage("selectedTeamName") var selectedTeamName: String = ""
+    @AppStorage("selectedTeamId") var selectedTeamId: String = ""
     
     @State private var selectionIndex = 3
     var body: some View {
@@ -24,54 +25,34 @@ struct TeamDetailView: View {
                         .scaledToFit()
                         .opacity(0.5)
                         .frame(width: UIScreen.main.bounds.width*0.8, height:300)
+                        .padding(.top, 50)
                 }
                 
                 placeholder: {
                     ProgressView()
-                    .frame(width: UIScreen.main.bounds.width*0.8, height:300)}}
+                        .frame(width: UIScreen.main.bounds.width*0.8, height:300)
+                        .padding(.top, 50)
+                }}
             
             VStack{
-                ZStack{
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
-                            ForEach(fixtureViewModel.teamFixtures) { fixture in
-                                FixtureView(fixture: fixture)
+                    ZStack{
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 20) {
+                                ForEach(fixtureViewModel.teamFixtures) { fixture in
+                                    FixtureView(fixture: fixture)
+                                }
+                                .padding(.vertical, 3)
                             }
-                            .padding(.vertical, 3)
-                        }
-                        .safeAreaInset(edge: .leading) {
-                            Color.clear.frame(width: 20)
-                        }
-                        .safeAreaInset(edge: .trailing) {
-                            Color.clear.frame(width: 30)
+                            .safeAreaInset(edge: .leading) {
+                                Color.clear.frame(width: 20)
+                            }
+                            .safeAreaInset(edge: .trailing) {
+                                Color.clear.frame(width: 30)
+                            }
                         }
                     }
-                }
-                .padding(.top, UIScreen.main.bounds.height*0.09)
-                .frame(width: UIScreen.main.bounds.width * 1, height: 160)
-//                Spacer()
-//                ZStack{ // competitions
-//                    RoundedRectangle(cornerRadius: 30)
-//                        .fill(Color.bottomBarColor.opacity(1))
-//                        .frame(width: UIScreen.main.bounds.width * 0.8, height: 160)
-//                        .shadow(color: Color.BlackAndWhiteColor.opacity(0.5), radius: 2)
-//                    Text("Competitions")
-//                        .font(.custom("HelveticaNeue-Light", size: 17))
-//                        if let team = viewModel.teamDetails{
-//                            VStack{
-//                            Text(team.cmpt)
-//                            Text(team.cmpt2)
-//                            Text(team.cmpt3)
-//                            Text(team.cmpt4)
-//                            Text(team.cmpt5)
-//                            Text(team.cmpt6)
-//                            Text(team.cmpt7)
-//                        }
-//                            .font(.custom("HelveticaNeue-Light", size: 13))
-//                            .foregroundStyle(Color.bottomBarTextClr)
-//                            
-//                    }
-//                }
+                    .padding(.top, UIScreen.main.bounds.height*0.08)
+                    .frame(width: UIScreen.main.bounds.width * 1, height: 160)
                 Spacer()
                 teamSocialMedia(viewModel: viewModel)
                     .padding(.bottom, 0)
@@ -88,7 +69,7 @@ struct TeamDetailView: View {
         }
         
         .safeAreaInset(edge: .top){
-            topTeamOverlay(fixtureViewModel: fixtureViewModel ,standing: standing)
+            topTeamOverlay(fixtureViewModel: fixtureViewModel, viewModel: viewModel)
         }
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.all)
@@ -114,10 +95,12 @@ struct TeamDetailView: View {
 
 struct topTeamOverlay: View {
     @Environment(\.dismiss) var dismiss
+    
+    @AppStorage("selectedTeamId") var selectedTeamId: String = ""
+    @AppStorage("selectedTeamName") var selectedTeamName: String = ""
     @StateObject var fixtureViewModel: teamFixtureViewModel
-    let standing: LeagueStanding
+    @StateObject var viewModel: TeamDetailViewModel
     var body: some View {
-        let fixtur = fixtureViewModel.teamFixtures.first
         ZStack{
             Rectangle()
                 .fill(Color.mainAccentClr)
@@ -135,22 +118,24 @@ struct topTeamOverlay: View {
                         .foregroundStyle(Color.WhiteAndBlackColor)
                 })
                 .frame(width:60, height:60)
-                Text(standing.teamName)
+                Text(fixtureViewModel.teamFixtures.last?.homeName ?? "Team")
                     .font(.custom("HelveticaNeue-Light", size: 25))
                     .foregroundStyle(Color.WhiteAndBlackColor)
                     .multilineTextAlignment(.center)
                     .frame(width: 200)
                     .padding(.horizontal, 30)
                 
-                AsyncImage(url: URL(string: fixtur?.leagueLogo ?? "no image")){image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width:60, height:60)
-                }
-                placeholder: {
-                    ProgressView()
-                        .frame(width:60, height:60)
+                if let team = viewModel.teamDetails{
+                    Button(
+                        action: {
+                            selectedTeamName = team.teamName
+                            selectedTeamId = team.id},
+                        label: {
+                            Image(systemName: fixtureViewModel.teamFixtures.first?.homeName == selectedTeamName ? "heart.fill" : "heart")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundStyle(.red)})
+                    .frame(width: 50, height: 50)
                 }
             }
             .padding(.top, 50)
@@ -217,3 +202,4 @@ struct teamSocialMedia: View {
         }
     }
 }
+
